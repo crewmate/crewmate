@@ -9,6 +9,6 @@ module Jammit
       :force          => false
     }.merge(options)
     packager.force = options[:force]
-    packager.precache_all(options[:output_folder], options[:base_url])
+    #packager.precache_all(options[:output_folder], options[:base_url])
   end
 end

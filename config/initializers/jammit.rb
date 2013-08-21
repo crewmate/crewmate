@@ -1,5 +1,5 @@
 # I added this to make Jammit compile the assets in production
-require 'lib/jammit_loading'
+require 'jammit_loading'
 
 Sass::Plugin.update_stylesheets
 if Teambox.config.heroku?

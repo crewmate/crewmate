@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '1.8.7'
 
 group :rails do
   gem 'rails', '~> 3.0.3'
@@ -8,7 +7,7 @@ group :rails do
   gem 'tzinfo', '~> 0.3.12'
   gem 'i18n', '>= 0.1.3'
   gem 'tmail', '~> 1.2.3'
-  gem 'text-format', '>= 0.6.3', :require => 'text/format'
+  gem 'text-format', git: 'git://github.com/ccarruitero/text-format.git'
 end
 
 #Temporary hack - Fix once this ticket: is resolved
@@ -18,9 +17,10 @@ gem 'nokogiri'
 gem 'SystemTimer', '~> 1.2.0', :require => 'system_timer', :platform => :mri_18
 gem 'whenever', '~> 0.4.1', :require => nil
 gem 'icalendar', '~> 1.1.3'
-gem 'libxml-ruby', '1.1.3', :require => 'libxml'
+gem 'libxml-ruby' 
 gem 'rdiscount', '~> 1.6.3'
-gem 'haml', '~> 3.0.0.beta1'
+gem 'haml'
+gem 'sass'
 # gem 'mysql2'
 gem 'mysql', '~> 2.8.1', :require => nil, :group => 'mysql'
 gem 'pg', '~> 0.9.0', :require => nil, :group => 'pg'
@@ -43,14 +43,14 @@ gem 'cancan', '~> 1.4.1'
 gem 'immortal', :git => 'git://github.com/davidmm/immortal.git', :branch => 'postgresql_fix'
 gem 'rack-ssl-enforcer', :require => 'rack/ssl-enforcer'
 gem 'jammit'
+gem 'rake', '0.9.2'
 
 group :development do
-  gem 'ruby-debug', '~> 0.10.3', :require => nil
-  gem 'mongrel', '~> 1.1.5', :require => nil
+  gem 'debugger'
 end
 
 group :sqlite do
-  gem 'sqlite3-ruby', '~> 1.2.5', :require => nil
+  gem 'sqlite3'
 end
 
 group :test, :development do
@@ -66,7 +66,7 @@ end
 # we don't call the group :test because we don't want them auto-required
 group :testing do
   gem 'database_cleaner', '~> 0.5.0'
-  gem 'rcov'
+  gem 'simplecov'
   gem 'factory_girl', '~> 1.3.2'
   gem 'pickle', '~> 0.4.4'
   gem 'cucumber-rails', '~> 0.3.2', :require => nil

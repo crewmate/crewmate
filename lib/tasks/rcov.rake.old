@@ -2,7 +2,7 @@ begin
   require 'cucumber/rake/task'
   require 'rspec/core/rake_task'
 
-  namespace :rcov do
+  namespace :simplecov do
     Cucumber::Rake::Task.new(:cucumber_run) do |t|
       t.rcov = true
       t.rcov_opts = %w{--rails --exclude osx\/objc,gems\/,spec\/,features\/ --aggregate coverage.data}
