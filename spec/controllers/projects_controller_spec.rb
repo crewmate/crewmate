@@ -15,7 +15,7 @@ describe ProjectsController do
       get :index, :format => 'm'
 
       response.should render_template('projects/index')
-      response.body.match(/Use full Teambox/).should_not == nil
+      response.body.match(/Use full Crewmate/).should_not == nil
     end
   end
 

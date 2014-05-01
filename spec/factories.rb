@@ -10,11 +10,11 @@ Factory.sequence :email do |n|
 end
 
 Factory.sequence :name do |n|
-  "Teambox ##{n}"
+  "Crewmate ##{n}"
 end
 
 Factory.sequence :permalink do |n|
-  "teambox#{n}"
+  "crewmate#{n}"
 end
 
 Factory.define :user do |user|

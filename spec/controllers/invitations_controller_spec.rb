@@ -21,7 +21,7 @@ describe InvitationsController do
   describe "#create" do
     before do
       @users = []
-      @emails = "foo@localhost.com billg@microsoft.com fred@teambox.com"
+      @emails = "foo@localhost.com billg@microsoft.com cabin.boy@crewmate.org"
       5.times { @users << Factory(:user) }
       @project = Factory.create(:project)
     end

@@ -124,7 +124,7 @@ describe HooksController do
         end
 
         it "should raise (200 for sendgrid) and create a bounce message if an unknown user posts to a project" do
-          options = @options.merge!(:from => 'random_person@teambox.com')
+          options = @options.merge!(:from => 'random_person@crewmate.org')
           check_bounce_message(options) do
             post :create, options
           end

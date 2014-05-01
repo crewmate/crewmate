@@ -23,9 +23,9 @@ describe "permalink" do
     end
 
     it "should generate a unique permalink to #{model} if none is given" do
-      first_obj = Factory.create(model, :name => 'Teambox')
+      first_obj = Factory.create(model, :name => 'Crewmate')
       first_obj.permalink.should_not be_nil
-      duplicate = Factory.create(model, :name => 'Teambox!!!')
+      duplicate = Factory.create(model, :name => 'Crewmate!!!')
       duplicate.permalink.should_not == first_obj.permalink
     end
   end

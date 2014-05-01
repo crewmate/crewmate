@@ -4,16 +4,16 @@ require 'spec_helper'
 describe 'String#extract_emails' do
 
   context "valid" do
-    it "extracts single email from: pablo@teambox.com" do
-      should == %w[ pablo@teambox.com ]
+    it "extracts single email from: pablo@crewmate.org" do
+      should == %w[ pablo@crewmate.org ]
     end
 
     it "extracts multiple emails from: c@c.com word d@d.com\ne@f.com" do
       should == %w[ c@c.com d@d.com e@f.com ]
     end
 
-    it "extracts header-style emails from: 'Pablo' <pablo2@teambox.com>, 'Juan Jaramillo'" do
-      should == %w[ pablo2@teambox.com ]
+    it "extracts header-style emails from: 'Pablo' <pablo2@crewmate.org>, 'Juan Jaramillo'" do
+      should == %w[ pablo2@crewmate.org ]
     end
 
     it "handles two-part TLD from: james@cuppadev.co.uk" do
@@ -24,8 +24,8 @@ describe 'String#extract_emails' do
       should == %w[ a.fish@example.co.uk ]
     end
 
-    it "handles plus-addressing from: ohyeah+teambox@gmail.com" do
-      should == %w[ ohyeah+teambox@gmail.com ]
+    it "handles plus-addressing from: ohyeah+crewmate@gmail.com" do
+      should == %w[ ohyeah+crewmate@gmail.com ]
     end
 
     it "extracts email with numbers from: l3tt3rsAndNumb3rs@domain.com" do

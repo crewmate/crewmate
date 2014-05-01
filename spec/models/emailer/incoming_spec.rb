@@ -84,7 +84,7 @@ describe Emailer do
            <li>Clean</li>
            <li>Play</li>
           </ul>
-          On 19 August 2010 13:48, User <proj+conversation+22245@app.teambox.com<proj%2Bconversation%2B22245@app.teambox.com>> wrote:"
+          On 19 August 2010 13:48, User <proj+conversation+22245@app.crewmate.org<proj%2Bconversation%2B22245@app.crewmate.org>> wrote:"
           #{Emailer::ANSWER_LINE}
           <div class="email">
           <div class="people">

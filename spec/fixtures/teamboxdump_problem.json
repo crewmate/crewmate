@@ -73,9 +73,9 @@
             "avatar_url": "http://www.gravatar.com/avatar/ec000182f543f0236d5af5f30286a3c2?size=48&default=identicon",
             "first_name": "Stevie",
             "utc_offset": 32400,
-            "email": "james@teambox.com",
+            "email": "james@crewmate.org",
             "id": 5999,
-            "biography": "Teambox Genius!"
+            "biography": "Crewmate Genius!"
         },
         {
             "time_zone": "Seoul",
@@ -87,9 +87,9 @@
             "avatar_url": "http://www.gravatar.com/avatar/ec000182f543f0236d5af5f30286a3c2?size=48&default=identicon",
             "first_name": "Stevie",
             "utc_offset": 32400,
-            "email": "james@teambox.com",
+            "email": "james@crewmate.org",
             "id": 5999,
-            "biography": "Teambox Genius!"
+            "biography": "Crewmate Genius!"
         },
         {
             "time_zone": "Eastern Time (US & Canada)",
@@ -101,7 +101,7 @@
             "avatar_url": "http://www.gravatar.com/avatar/ec000182f543f0236d5af5f30286a3c2?size=48&default=identicon",
             "first_name": "Test",
             "utc_offset": -18000,
-            "email": "james@teambox.com",
+            "email": "james@crewmate.org",
             "id": 104504,
             "biography": null
         },

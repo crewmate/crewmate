@@ -49,8 +49,8 @@ describe HtmlFormatting, 'Should apply our special Markdown' do
     should == "<p>She used to mean:</p>\n\n<ul>\n<li>So</li>\n<li>much</li>\n<li>to</li>\n<li>me!</li>\n</ul>"
   end
 
-  it "she@couchsurfing.org used to mean so much to www.teambox.com" do
-    should == "<p><a href=\"mailto:she@couchsurfing.org\">she@couchsurfing.org</a> used to mean so much to <a href=\"http://www.teambox.com\">www.teambox.com</a></p>"
+  it "she@couchsurfing.org used to mean so much to www.crewmate.org" do
+    should == "<p><a href=\"mailto:she@couchsurfing.org\">she@couchsurfing.org</a> used to mean so much to <a href=\"http://www.crewmate.org\">www.crewmate.org</a></p>"
   end
 
   it %(I loved that quote: ["I like the Divers, but they want me want to go to a war."](http://www.shmoop.com/tender-is-the-night/tommy-barban.html) Great page, too.) do
@@ -61,16 +61,16 @@ describe HtmlFormatting, 'Should apply our special Markdown' do
     should == %Q{<p>I'd link my competitors' mistakes (<a href="http://www.failblog.org">www.failblog.org</a>) but that'd give them free traffic. So instead I link <a href="http://www.google.com">www.google.com</a>.</p>}
   end
 
-  it 'Did you know the logo from Teambox has <a href="http://en.wikipedia.org/wiki/Color_theory">carefully selected colors</a>? <img src="http://app.teambox.com/images/header_logo_large.jpg"/>' do
-    should == %Q{<p>Did you know the logo from Teambox has <a href="http://en.wikipedia.org/wiki/Color_theory">carefully selected colors</a>? <img src="http://app.teambox.com/images/header_logo_large.jpg" /></p>}
+  it 'Did you know the logo from Crewmate has <a href="http://en.wikipedia.org/wiki/Color_theory">carefully selected colors</a>? <img src="http://crewmate.org/images/header_logo_black.png"/>' do
+    should == %Q{<p>Did you know the logo from Crewmate has <a href="http://en.wikipedia.org/wiki/Color_theory">carefully selected colors</a>? <img src="http://crewmate.org/images/header_logo_black.png" /></p>}
   end
 
-  it 'This commit needs a spec: http://github.com/teambox/teambox/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb' do
-    should == "<p>This commit needs a spec: <a href=\"http://github.com/teambox/teambox/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb\">http://github.com/teambox/teambox/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e...</a></p>"
+  it 'This commit needs a spec: http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb' do
+    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb\">http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e...</a></p>"
   end
 
-  it 'This commit needs a spec: http://github.com/teambox/teambox/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8' do
-    should == "<p>This commit needs a spec: <a href=\"http://github.com/teambox/teambox/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8\">http://github.com/teambox/teambox/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8</a></p>"
+  it 'This commit needs a spec: http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8' do
+    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8\">http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8</a></p>"
   end
 
   it "Lorem ipsum dolor sit amet.\n\n<pre>*lorem* _ipsum_ weird_var_name</pre>\n\nExcepteur sint occaecat cupidatat non proident." do
