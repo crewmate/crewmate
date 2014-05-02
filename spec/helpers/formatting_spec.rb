@@ -66,11 +66,11 @@ describe HtmlFormatting, 'Should apply our special Markdown' do
   end
 
   it 'This commit needs a spec: http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb' do
-    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb\">http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b..</a></p>"
+    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb\">http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b...</a></p>"
   end
 
   it 'This commit needs a spec: http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8' do
-    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8\">http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed7..</a></p>"
+    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8\">http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed7...</a></p>"
   end
 
   it "Lorem ipsum dolor sit amet.\n\n<pre>*lorem* _ipsum_ weird_var_name</pre>\n\nExcepteur sint occaecat cupidatat non proident." do
