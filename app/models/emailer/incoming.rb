@@ -224,9 +224,9 @@ module Emailer::Incoming
   # so we split on that too and again take top half
   # finally strip any whitespace
   def strip_responses(body)
-    # For GMail. Matches "On 19 August 2010 13:48, User <proj+conversation+22245@app.teambox.com<proj%2Bconversation%2B22245@app.teambox.com>> wrote:"
+    # For GMail. Matches "On 19 August 2010 13:48, User <proj+conversation+22245@app.crewmate.org<proj%2Bconversation%2B22245@app.teambox.com>> wrote:"
     body.to_s.strip.
-      gsub(/\n[^\r\n]*\d{2,4}.*\+.*\d@app.teambox.com.*:.*\z/m, '').
+      gsub(/\n[^\r\n]*\d{2,4}.*\+.*\d@app.crewmate.org.*:.*\z/m, '').
       split(Emailer::ANSWER_LINE).first.
       split("<div class='email'").first.
       strip
