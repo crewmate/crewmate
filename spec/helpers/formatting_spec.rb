@@ -66,7 +66,7 @@ describe HtmlFormatting, 'Should apply our special Markdown' do
   end
 
   it 'This commit needs a spec: http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb' do
-    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb\">http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b...</a></p>"
+    should == "<p>This commit needs a spec: <a href=\"http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e80/lib/html_formatting.rb\">http://github.com/crewmate/crewmate/blob/4b54c555d118cd3bc4d4d80fbc59b1eed79b..</a></p>"
   end
 
   it 'This commit needs a spec: http://github.com/crewmate/crewmate/commit/4b54c555d118cd3bc4d4d80fbc59b1eed79b4e8' do
