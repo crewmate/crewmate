@@ -98,7 +98,7 @@ module TasksHelper
   end
 
   def time_tracking_doc
-    link_to(t('projects.fields.new.time_tracking_docs'), "http://help.teambox.com/faqs/advanced-features/time-tracking", :target => '_blank')
+    link_to(t('projects.fields.new.time_tracking_docs'), "https://github.com/crewmate/crewmate/wiki/time-tracking", :target => '_blank')
   end
 
   def date_picker(f, field, embedded = false, html_options = {})

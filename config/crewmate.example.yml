@@ -190,10 +190,10 @@ defaults: &defaults
   tracking_enabled: false
 
   # Destination where your users could write to ask for help. Accepts an email or website.
-  support: http://help.teambox.com
+  support:  https://github.com/crewmate/crewmate
 
-  help_url: http://help.teambox.com/faqs/using-teambox
-  support_url: http://teambox.com/community
+  help_url: https://github.com/crewmate/crewmate/wiki
+  support_url: https://github.com/crewmate/crewmate
 
   heroku: <%= !!ENV['HEROKU_TYPE'] %>
 
