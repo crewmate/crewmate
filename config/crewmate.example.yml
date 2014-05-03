@@ -184,10 +184,7 @@ defaults: &defaults
   allow_default_organizations: false
 
   # If you want to use Google Analytics, uncomment this and fill your Tracking ID.
-#  analytics_tracking_id:
-
-  # Allow crewmate.org to gather statistics about this installation
-  tracking_enabled: false
+  #  analytics_tracking_id:
 
   # Destination where your users could write to ask for help. Accepts an email or website.
   support:  https://github.com/crewmate/crewmate

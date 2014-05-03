@@ -44,7 +44,7 @@ class Emailer < ActionMailer::Base
       from_address(reply_identifier, user.try(:name))
     end
 
-    def from_address(recipient = "no-reply", name = "Teambox")
+    def from_address(recipient = "no-reply", name = "Crewmate")
       domain = Teambox.config.smtp_settings[:domain]
       address = "#{recipient}@#{domain}"
 
@@ -188,7 +188,7 @@ class Emailer < ActionMailer::Base
   end
 
   def bounce_message(exception_mail, pretty_exception)
-    info_url = 'http://help.teambox.com/faqs/advanced-features/email'
+    info_url = 'https://github.com/crewmate/crewmate/wiki/email'
 
     mail(
       :to         => exception_mail,
@@ -226,7 +226,7 @@ class Emailer < ActionMailer::Base
 
     def signup_invitation
       invitation = Invitation.new do |i|
-        i.email = 'test@teambox.com'
+        i.email = 'test@crewmate.org'
         i.token = ActiveSupport::SecureRandom.hex(20)
         i.user = User.first
         i.project = Project.first

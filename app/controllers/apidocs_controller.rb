@@ -135,7 +135,7 @@ class ApidocsController < ApplicationController
           membership.save!
         end
 
-        @project = @apiman.projects.new(:name => 'Teambox Api Example Project', :user_id => @apiman.id)
+        @project = @apiman.projects.new(:name => 'Crewmate Api Example Project', :user_id => @apiman.id)
         @project.organization = @organization
         @project.save!
 
@@ -147,7 +147,7 @@ class ApidocsController < ApplicationController
 
         example_conversation("What to do with the API", "Anyone have any ideas?")
 
-        example_invite("frodo@teambox.com")
+        example_invite("frodo@crewmate.org")
 
         example_page("Random notes", "... of questionable value")
         example_note(@project.pages.first, "RailsConf", "TODO: check dates")
@@ -212,7 +212,7 @@ class ApidocsController < ApplicationController
         pass = ActiveSupport::SecureRandom.hex(10)
         user = User.new(
           :login => login,
-          :email => "#{login}@teambox.com",
+          :email => "#{login}@crewmate.org",
           :first_name => first_name,
           :last_name => last_name,
           :password => pass,
