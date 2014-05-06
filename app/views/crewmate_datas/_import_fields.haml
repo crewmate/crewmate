@@ -1,8 +1,8 @@
 - if @data.status_name == :uploading
   %h3= t('.service')
   .service
-    = f.radio_button :service, 'teambox'
-    = f.label :service_teambox, 'Teambox'
+    = f.radio_button :service, 'crewmate'
+    = f.label :service_crewmate, 'Crewmate'
   .service
     = f.radio_button :service, 'basecamp'
     = f.label :service_basecamp, 'Basecamp'
@@ -16,10 +16,10 @@
   %table#map_users
     %tr
       %th= t('.user')
-      %th= t('.teambox_user')
+      %th= t('.crewmate_user')
       %th
     = map_table_for_data(@data)
   .target_project.many_fields
-    %label{:for => 'teambox_data_target_organization'}= t('.in_organization')
-    = select_tag "teambox_data[target_organization]", options_for_select(options_for_target_organization, @data.target_organization)
+    %label{:for => 'crewmate_data_target_organization'}= t('.in_organization')
+    = select_tag "crewmate_data[target_organization]", options_for_select(options_for_target_organization, @data.target_organization)
     = errors_for @data, "target_organization"

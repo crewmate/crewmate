@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
-class TeamboxData
+class CrewmateData
   # Note:
   # Internally the import is just a mass creation of objects using hashes of
-  # teambox data properties. Importers for each different dump are required to
-  # convert their representations to teambox data.
+  # crewmate data properties. Importers for each different dump are required to
+  # convert their representations to crewmate data.
 
   def unserialize_basecamp(object_maps, opts={})
     # xml dump format:
@@ -19,7 +19,7 @@ class TeamboxData
     # participants/person [people]
 
     import_data = metadata_basecamp(true)
-    unserialize_teambox(import_data, object_maps, opts)
+    unserialize_crewmate(import_data, object_maps, opts)
   end
 
   def metadata_basecamp(with_project_data=false)

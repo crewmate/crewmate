@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class TeamboxData < ActiveRecord::Base
+class CrewmateData < ActiveRecord::Base
   set_table_name("teambox_datas") # Backward compatibility
   include Immortal
 
@@ -98,7 +98,7 @@ class TeamboxData < ActiveRecord::Base
         self.status_name = :processing
         if Teambox.config.delay_data_processing
           self.status_name = :pre_processing
-          TeamboxData.send_later(:delayed_import, self.id)
+          CrewmateData.send_later(:delayed_import, self.id)
         else
           self.status_name = :processing
           do_import
@@ -121,7 +121,7 @@ class TeamboxData < ActiveRecord::Base
   def post_check_state
     if type_name == :export
       Emailer.send_with_language(:notify_export, user.locale, self.id) if @dispatch_notification
-      TeamboxData.send_later(:delayed_export, self.id) if @dispatch_export
+      CrewmateData.send_later(:delayed_export, self.id) if @dispatch_export
     elsif type_name == :import
       store_import_data if @do_store_import_data
       Emailer.send_with_language(:notify_import, user.locale, self.id) if @dispatch_notification
@@ -176,11 +176,11 @@ class TeamboxData < ActiveRecord::Base
   end
 
   def self.delayed_export(data_id)
-    TeamboxData.find_by_id(data_id).try(:do_export)
+    CrewmateData.find_by_id(data_id).try(:do_export)
   end
 
   def self.delayed_import(data_id)
-    TeamboxData.find_by_id(data_id).try(:do_import)
+    CrewmateData.find_by_id(data_id).try(:do_import)
   end
 
   def exported?
