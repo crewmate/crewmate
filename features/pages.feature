@@ -4,7 +4,7 @@ Feature: Making project pages
     Given a project exists with name: "Ruby Rockstars"
     And @mislav exists and is logged in
     And I am in the project called "Ruby Rockstars"
-  
+
   Scenario: I create a page
     When I go to the pages of the "Ruby Rockstars" project
       And I follow "New Page" within ".text_actions"
@@ -12,12 +12,12 @@ Feature: Making project pages
       And I fill in "Description" with "A cool page indeed"
       And I press "Create"
     Then I should see "Cool page"
-    And I should see "Text"
-    And I should see "Divider"
-    And I should see "Image or file"
+    And I should see "TEXT"
+    And I should see "DIVIDER"
+    And I should see "IMAGE OR FILE"
     And I should see "Edit"
     And I should see "Delete"
-  
+
   Scenario: I create a simple page
     Given the project page "Conferences to Attend" exists in "Ruby Rockstars"
     When I go to the pages of the "Ruby Rockstars" project

@@ -11,6 +11,6 @@ Feature: Delete Project
     And I wait for 2 seconds
     And I should see "Archive or Delete project" in the title
     And I should see "ARCHIVE THIS PROJECT"
-    And I should see "Delete this project forever"
+    And I should see "DELETE THIS PROJECT FOREVER"
     When I follow "Delete this project forever" confirming with OK
     Then I should see "You deleted the project"
