@@ -20,7 +20,9 @@ document.on("click", "a.collapsed_mode", function(e,el) {
   ActivityFeed.collapseAll();
   $$('a.collapsed_mode')[0].up('.el').toggle();
   $$('a.expanded_mode')[0].up('.el').toggle();
-  var r = new Ajax.Request('/account/activity_feed_mode/collapsed');
+  var r = new Ajax.Request('/account/activity_feed_mode/collapsed', {
+    method: 'get'
+  });
 });
 
 document.on("click", "a.expanded_mode", function(e,el) {
@@ -28,7 +30,9 @@ document.on("click", "a.expanded_mode", function(e,el) {
   ActivityFeed.expandAll();
   $$('a.collapsed_mode')[0].up('.el').toggle();
   $$('a.expanded_mode')[0].up('.el').toggle();
-  var r = new Ajax.Request('/account/activity_feed_mode/expanded');
+  var r = new Ajax.Request('/account/activity_feed_mode/expanded', {
+    method: 'get'
+  });
 });
 
 document.on("click", "#activities .comment_header", function(e,el) {
