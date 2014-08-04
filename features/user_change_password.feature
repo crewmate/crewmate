@@ -1,3 +1,4 @@
+@javascript
 Feature: Edit password
 
   Background:
