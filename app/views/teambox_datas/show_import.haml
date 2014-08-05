@@ -4,7 +4,7 @@
 %h2= t('.title')
 
 - if @data.need_data?
-  = form_for @data, :html => {:multipart => true} do |f|
+  = form_for @data, :url => teambox_data_path(@data), :html => {:multipart => true} do |f|
     = fields_for_teambox_import(f, @data)
     .submit
       = f.submit t('.submit')
@@ -20,5 +20,5 @@
   %p= t('teambox_datas.data.processing')
   %a{:href => teambox_data_path(@data), :class => 'cancel', 'data-method' => 'delete'}= t('common.cancel')
 - else
-  %p= t('.import_error')	
+  %p= t('.import_error')
   %a{:href => teambox_data_path(@data), :class => 'cancel', 'data-method' => 'delete'}= t('common.cancel')
