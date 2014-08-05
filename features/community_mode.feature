@@ -3,6 +3,7 @@ Feature: When I use Crewmate community version, there is only one organization
 
   Background:
     Given I am using the community version
+    And the public signup is disabled
     And the database is empty
 
   Scenario: I am asked to configure the deployment

@@ -3,6 +3,10 @@ Given /^I am using the community version$/ do
   Teambox.config.community = true
 end
 
+Given /^the public signup is disabled$/ do
+  Teambox.config.allow_signups = false
+end
+
 Given /I am an administrator in the organization called "([^\"]*)"$/ do |name|
   organization = Organization.find_by_name(name) || Organization.create!(:name => name, :permalink => name)
   organization.add_member(@current_user, :admin)
