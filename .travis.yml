@@ -10,6 +10,8 @@ env:
 branches:
   except:
     - fit-pages
+before_install:
+  - echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 before_script:
   - "cp -v config/database.${DB}.yml config/database.yml"
   - "cp -v config/crewmate.example.yml config/crewmate.yml"
