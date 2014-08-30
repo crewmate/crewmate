@@ -11,6 +11,7 @@
     = f.label :asset, t('.select_file')
     = f.file_field :import_data, :size => 20
     .clear
+
 - elsif @data.status_name == :mapping
   %p= t('.please_supply_user_map')
   %table#map_users

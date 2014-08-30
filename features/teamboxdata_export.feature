@@ -1,6 +1,6 @@
 Feature: Exporting data
 
-  Background: 
+  Background:
     Given a project exists with name: "Ruby Rockstars"
     And @mislav exists and is logged in
     And I am in the project called "Ruby Rockstars"
