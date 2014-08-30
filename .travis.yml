@@ -11,12 +11,12 @@ branches:
   except:
     - fit-pages
 before_install:
-  - echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 before_script:
   - "cp -v config/database.${DB}.yml config/database.yml"
   - "cp -v config/crewmate.example.yml config/crewmate.yml"
   - "bundle exec rake db:create db:schema:load RAILS_ENV=test"
-script: "bundle exec rake spec && bundle exec cucumber"
+script: "bundle exec rake spec cucumber"
 matrix:
   allow_failures:
     - rvm: 2.0.0
