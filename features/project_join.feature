@@ -1,7 +1,7 @@
 @organizations
 Feature: Joining a project, either because it's public or because we're admin of its organization
 
-Background: 
+Background:
   Given @mislav exists and is logged in
   And the following confirmed users exist
     | login  | email                    | first_name | last_name |

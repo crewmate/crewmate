@@ -2,7 +2,7 @@
 class Public::PublicController < ApplicationController
   skip_before_filter :rss_token, :recent_projects, :touch_user,
                      :verify_authenticity_tokeni, :login_required
-  before_filter :set_english_locale, :load_public_projects
+  before_filter :set_english_locale, :load_user_public_projects
 
   layout 'public_projects'
 
@@ -16,13 +16,13 @@ class Public::PublicController < ApplicationController
       project_id = params[:project_id] || params[:id]
       if project_id
         @project = Project.find_by_permalink(project_id)
-        return render :text => 'Unexisting project' unless @project
+        return render :text => 'Unexisting project'   unless @project
         return render :text => 'Not a public project' unless @project.public
       end
     end
 
-    def load_public_projects
-      @projects = Project.find_all_by_public(true)
+    def load_user_public_projects
+      @projects = current_user ? current_user.projects.find_all_by_public(true) : []
     end
 
 end

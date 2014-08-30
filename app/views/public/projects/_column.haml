@@ -2,19 +2,25 @@
   .section.nav_links.el
     = link_to "Overview", public_project_path(@project), class: :el
     = link_to "All Conversations", public_project_conversations_path(@project), class: :el
+
   - if @project.pages.any?
     .section.nav_links.el
       %h3 Pages
       - for page in @project.pages
         = link_to h(page), public_project_page_path(@project, page), class: :el
+
   - else
     %p No pages on this project
+
   .section.nav_links
     - if @projects.include? @project
       %b= link_to "View inside Crewmate", project_path(@project), class: :el
+
     - else
       %b= link_to "Join this group", project_path(@project), class: :el
+
     = link_to "Other public projects...", public_projects_path, class: :el
+
   .section
     %p== This project has #{@project.users.size} members
     - for user in @project.users[0,28]
