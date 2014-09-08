@@ -49,7 +49,7 @@ end
 
 Given /I am currently in the project (.*)$/ do |project_type|
   @current_project ||= Factory(project_type.to_sym)
-  visit(projects_path(@current_project))
+  visit(project_path(@current_project))
 end
 
 Given /I have recently managed the project "([^\"]*)"$/ do |name|
