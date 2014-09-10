@@ -30,10 +30,10 @@ gem 'tilt'
 gem 'choices', git: 'git://github.com/teambox/choices.git'
 
 gem 'will_paginate', git: 'git://github.com/mislav/will_paginate.git', branch: 'rails3'
-gem 'thinking-sphinx', require: 'thinking_sphinx'
+gem 'thinking-sphinx', '2.1.0', require: 'thinking_sphinx'
 gem 'sprockets-rails'
 gem 'sprockets', '1.0.2'
-gem 'barista', '~> 1.0'
+gem 'barista', '~> 1.3.0'
 gem 'vestal_versions', '~> 1.2.2', git: 'git://github.com/adamcooper/vestal_versions'
 gem 'paperclip', '~> 2.7.5'
 gem 'teambox-permalink_fu', require: 'permalink_fu'
@@ -52,7 +52,6 @@ gem 'pg',      group: 'pg'
 group :debug do
   gem 'pry-rails'
   gem 'pry-debugger'
-
   gem 'better_errors'
   gem 'binding_of_caller'
 end
