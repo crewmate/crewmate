@@ -24,7 +24,6 @@ Feature: Search comments in projects
     And I wait for 2 seconds
     And I go to the projects page
     When the search index is rebuilt
-    And I wait for 2 seconds
     And I fill in the search box with "the mine"
     And I submit the search
     Then I should see "1 result"

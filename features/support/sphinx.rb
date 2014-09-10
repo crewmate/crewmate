@@ -12,6 +12,9 @@ module SphinxHelpers
 
     # Wait for Sphinx to finish loading in the new index files.
     sleep 0.25 until ts_index_finished?
+
+    # seems to be necessary before hitting sphinx
+    sleep(2)
   end
 
   def ts_index_finished?
