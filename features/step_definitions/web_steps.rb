@@ -33,7 +33,7 @@ end
 
 When /^(?:|I )press "([^\"]*)"(?: within "([^\"]*)")?$/ do |button, selector|
   with_scope(selector) do
-    click_button(button)
+    find(:link_or_button, button).click
   end
 end
 
@@ -288,17 +288,7 @@ When  /^(?:|I )drag the task "([^\"]*)" above "([^\"]*)"(?: within "([^\"]*)")?$
 end
 
 When /^(.*) confirming with OK$/ do |main_task|
-  if Capybara.current_driver == Capybara.javascript_driver
-    page.evaluate_script("window.old_alert = window.alert")
-    page.evaluate_script("window.old_confirm = window.confirm")
-    page.evaluate_script("window.alert = function(msg) { return true; }")
-    page.evaluate_script("window.confirm = function(msg) { return true; }")
-  end
-
-  step main_task
-
-  if Capybara.current_driver == Capybara.javascript_driver
-    page.evaluate_script("window.alert = window.old_alert")
-    page.evaluate_script("window.confirm = window.old_confirm")
+  accept_confirm_from do
+    step main_task
   end
 end

@@ -62,7 +62,6 @@ class PeopleController < ApplicationController
       @project = Project.where('permalink = (?)', params[:project_id]).first
     end
 
-
     if current_user.in_project(@project)
       users = @project.users
 

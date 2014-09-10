@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 When /^the search index is re(indexed|built)$/ do |action|
   ts_reindex(action == 'built')
-  # seems to be necessary before hitting sphinx
-  sleep(0.2)
 end
 
 When /^I fill in the search box with "(.+)"$/ do |value|
@@ -12,7 +10,7 @@ end
 When /^I submit the search/ do
   if Capybara.current_driver == Capybara.javascript_driver
     within(:xpath, "//form[@id='search']") do
-      locate(:xpath, "//input[@name='q']").node.send_keys(:return)
+      find(:xpath, "//input[@name='q']").native.send_keys(:Enter)
     end
   else
     # Not Implemented yet

@@ -15,14 +15,16 @@ Feature: Search comments in projects
     And I wait for 2 seconds
     And I fill in the comment box with "I found a hunk of gold today in the mine!"
     And I press "Save"
+    And I wait for 2 seconds
     And I go to the projects page
     And I follow "Space elevator"
     And I wait for 2 seconds
     And I fill in the comment box with "Let's finish this space elevator before Tuesday."
     And I press "Save"
+    And I wait for 2 seconds
     And I go to the projects page
-
     When the search index is rebuilt
+    And I wait for 2 seconds
     And I fill in the search box with "the mine"
     And I submit the search
     Then I should see "1 result"

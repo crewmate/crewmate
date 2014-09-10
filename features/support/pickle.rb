@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 # pickle and factory_girl need to load the app so they can inspect models
-ENV["RAILS_ENV"] ||= "cucumber"
+ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../../config/environment', __FILE__)
 
 require 'factory_girl'
