@@ -30,3 +30,5 @@ teambox2
 config/teambox.yml
 config/crewmate.yml
 
+/.gem
+/bin
