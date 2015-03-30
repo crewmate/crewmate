@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
 
+  config.relative_url_root = ""
+
   before_filter :set_locale,
                 :rss_token,
                 :set_client,

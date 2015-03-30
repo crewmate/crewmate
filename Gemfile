@@ -43,7 +43,8 @@ gem 'rack-ssl-enforcer', require: 'rack/ssl-enforcer'
 gem 'jammit'
 gem 'rake', '0.9.2'
 gem 'thin'
-
+gem 'iconv'
+gem 'json_pure'
 
 gem 'mysql2', '~> 0.2.0', group: 'mysql'
 # gem 'mysql', '~> 2.8.1', :require => nil, :group => 'mysql'
