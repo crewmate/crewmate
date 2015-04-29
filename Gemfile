@@ -82,3 +82,4 @@ group :testing do
   gem 'capybara', '~> 0.4.0'
   gem 'launchy', '~> 0.3.7'
 end
+gem 'faye-websocket', '~> 0.9.2'

@@ -101,6 +101,7 @@ module Teambox
     # https://github.com/tobmatth/rack-ssl-enforcer
     config.middleware.use Rack::SslEnforcer if Teambox.config.secure_logins
 
+    config.middleware.use "CrewmateWebSocket"
   end
 
   def self.fetch_incoming_email
