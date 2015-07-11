@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class ApiV1::APIController < ApplicationController
-  skip_before_filter :rss_token, :recent_projects, :touch_user, :verify_authenticity_token, :add_chrome_frame_header
+  skip_before_filter :rss_token, :recent_projects, :touch_user,
+                     :verify_authenticity_token, :add_chrome_frame_header
+  before_filter :set_headers
 
   API_LIMIT = 50
 
@@ -181,4 +183,10 @@ class ApiV1::APIController < ApplicationController
     request.format = :json unless request.format == :js
   end
 
+  def set_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+    headers['Access-Control-Request-Method'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  end
 end

@@ -231,6 +231,7 @@ Teambox::Application.routes.draw do
     end
 
     namespace :api_v1, :path => 'api/1' do
+      match '*all', to: 'root#preflight', via: [:options]
 
       namespace :public do
       end
