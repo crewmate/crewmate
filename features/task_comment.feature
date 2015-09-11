@@ -10,7 +10,6 @@ Feature: Commenting on a task
       | Setup Continious integration | This week      | Crewmate |
     And I go to the "crewmate" tasks page
 
-  @todo
   Scenario: I change task date by commenting
     When I follow "Setup Continious integration"
     And I wait for 1 second
@@ -29,4 +28,4 @@ Feature: Commenting on a task
     And I select the day "10" with the date picker
     And I press "Save"
     And I wait for 2 second
-    Then I should see "Jan 25" and "Jan 10" within the last comment body
+    Then I should see "JAN 25" and "JAN 10" within the last comment body
