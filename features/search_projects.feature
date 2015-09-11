@@ -8,6 +8,7 @@ Feature: Search comments in projects
     Given @voodoo_prince exists and is logged in
     And I am in the project called "Gold Digging"
 
+  @todo
   Scenario: Search all projects
     Given I am in the project called "Space elevator"
     When I go to the projects page
@@ -31,6 +32,7 @@ Feature: Search comments in projects
     And I should see "I found a hunk of gold" in the results
     But I should not see "finish this space elevator" in the results
 
+  @todo
   Scenario: Search for a conversation by title
     Given there is a conversation titled "Where are the cats?" in the project "Gold Digging"
     When the search index is reindexed
@@ -38,6 +40,7 @@ Feature: Search comments in projects
     Then I should see "Where are the cats" in the results
     And I should see "Gold Digging" in the results
 
+  @todo
   Scenario: Search for a conversation by body
     Given there is a conversation with body "Oh my god I love cats LOL" in the project "Gold Digging"
     When the search index is reindexed
@@ -45,6 +48,7 @@ Feature: Search comments in projects
     Then I should see "Oh my god I love cats LOL" in the results
     And I should see "Gold Digging" in the results
 
+  @todo
   Scenario: Search for a task
     Given there is a task titled "Feed the cats" in the project "Gold Digging"
     When the search index is reindexed
@@ -52,6 +56,7 @@ Feature: Search comments in projects
     Then I should see "Feed the cats" in the results
     And I should see "Gold Digging" in the results
 
+  @todo
   Scenario: Search for a task list
     Given the task list called "Take care of the cats" belongs to the project called "Gold Digging"
     When the search index is reindexed
@@ -59,6 +64,7 @@ Feature: Search comments in projects
     Then I should see "Take care of the cats" in the results
     And I should see "Gold Digging" in the results
 
+  @todo
   Scenario: Search for a page
     Given the project page "Minerals to watch for" exists in "Gold Digging"
     When the search index is reindexed

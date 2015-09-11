@@ -16,6 +16,7 @@ Feature: Reorder task within the task list view
       | Publish a gem           | Next week | Crewmate |
     And I go to the "crewmate" tasks page
 
+  @todo
   Scenario: Reorder task within a task list
     When I follow "This week"
     And I drag the task "Fix a drag and drop bug" above "Write more test"

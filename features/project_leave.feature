@@ -1,4 +1,4 @@
-@javascript @wip-late
+@javascript
 Feature: Leaving a project
 
   Background:

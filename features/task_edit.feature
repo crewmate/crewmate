@@ -10,6 +10,7 @@ Feature: Editing a task
       | Fix major bug | Bugs      | Crewmate |
     And I go to the "Crewmate" tasks page
 
+  @todo
   Scenario: I change task name from full view
     When I follow "Fix major bug"
     And I wait for 1 second

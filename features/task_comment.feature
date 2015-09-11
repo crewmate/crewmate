@@ -10,6 +10,7 @@ Feature: Commenting on a task
       | Setup Continious integration | This week      | Crewmate |
     And I go to the "crewmate" tasks page
 
+  @todo
   Scenario: I change task date by commenting
     When I follow "Setup Continious integration"
     And I wait for 1 second

@@ -10,6 +10,7 @@ Feature: Reorder task within the task list view
       | Next release | Crewmate |
     And I go to the "crewmate" tasks page
 
+  @todo
   Scenario: Reorder task list
     When I follow "Reorder Task Lists"
     And I drag the task list "Bugfixes" above "Next release"

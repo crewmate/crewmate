@@ -34,6 +34,7 @@ Feature: See tasks in different, common groupings
     But I should not see the task called "Tell my friends" in the "This week" task list
     And I should not see the task called "Beg Apple to approve of the iPhone app" in the "Later" task list
 
+  @todo
   Scenario: See only my tasks
     Given the task called "Tell my friends" is assigned to me
     And the task called "Tell my friends" is resolved
