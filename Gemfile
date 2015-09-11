@@ -75,7 +75,7 @@ group :test do
   gem 'factory_girl',     '~> 1.3.2'
   gem 'pickle',           '~> 0.4.4'
   gem 'cucumber-rails',                 require: false
-  gem 'cucumber'
+  gem 'cucumber',         '<= 2.0.0'
   gem 'poltergeist'
   gem 'capybara'
   gem 'email_spec'
