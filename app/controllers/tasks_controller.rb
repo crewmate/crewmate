@@ -100,6 +100,7 @@ class TasksController < ApplicationController
         end
       }
       f.js {
+        response.headers['X-JSON'] = @task.to_json(:include => :assigned)
         if params[:task][:name]
           head :ok
         end

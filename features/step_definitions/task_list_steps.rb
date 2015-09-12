@@ -43,11 +43,11 @@ When /^I fill in "([^\"]*)" with "([^\"]*)" in the new task form of the "([^\"]*
 end
 
 Then /^(?:|I )should see "([^\"]*)" as a task in the task list$/ do |text|
-  step %(I should see '#{text}' within '.tasks')
+  step %(I should see '#{text}' within '.task_list')
 end
 
 Then /^(?:|I )should see "([^\"]*)" as a task name$/ do |text|
-  step %(I should see '#{text}' within '.tasks a.name')
+  step %(I should see '#{text}' within '.task_list a.name')
 end
 
 Then /^I should see the task list "([^\"]*)" before "([^\"]*)"$/ do |task_list1, task_list2|

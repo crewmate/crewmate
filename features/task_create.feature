@@ -45,7 +45,6 @@ Feature: Creating a task
       |                                                                                                                                                                                                                                                                                                                                                                           | must not be blank                   |
       | a123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790123456790 | must be shorter than 255 characters |
 
-  @todo
   Scenario: Mislav edits a task name
     Given a task exists with name: "Ohhh ya"
     And the task called "Ohhh ya" belongs to the task list called "Awesome Ruby Yahh"
@@ -55,9 +54,8 @@ Feature: Creating a task
     And I fill in "Task title" with "Uh Ohhh ya"
     And I press "Update Task"
     And I wait for 1 second
-    Then I should see "Uh Ohhh ya" in the title
+    Then I should see "Uh Ohhh ya" in the task header
 
-  @todo
   Scenario: User creates multiple tasks one after the other
     When I go to the "Awesome Ruby Yahh" task list page of the "Ruby Rockstars" project
     And I follow "+ Add Task"

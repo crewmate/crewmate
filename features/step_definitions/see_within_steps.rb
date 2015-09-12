@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 {
+  'in the task header'   => '.task_header',
   'in the title'         => 'h2',
   'in the watchers list' => '.watching',
   'as a button'          => 'a.button, button',

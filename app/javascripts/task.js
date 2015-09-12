@@ -174,7 +174,7 @@ document.observe('dom:loaded', function(e) {
 });
 
 document.on('ajax:success', 'form.edit_task', function(e, form) {
-  var person = form['task[assigned_id]'].value
+  var person = (form['task[assigned_id]'] || $$('#task_assigned_id').first()).value
   var status = form['task[status]'] && form['task[status]'].value
   var task = form.up('.thread')
   var task_count = Number($('open_my_tasks').innerHTML),
