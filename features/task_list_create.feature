@@ -24,7 +24,6 @@ Feature: Creating a task list
     And I wait for 2 seconds
     Then I should see "Really Awesome Ruby Yahh" within ".head a"
 
-  @todo
   Scenario: Mislav edits a task list due date
     Given I have a task list called "Awesome Ruby Yahh"
     And I am on its task list page

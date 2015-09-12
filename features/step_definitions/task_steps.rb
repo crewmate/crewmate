@@ -159,7 +159,7 @@ end
 
 When /^(?:|I )select "([^\"]*)" in the "([^\"]*)" calender?$/ do |number, calender|
   with_css_scope("div[id$='_#{calender}_on']") do |node|
-    node.find(:css, "table div[contains(#{number})]").click
+    node.find("table div", :text => number).click
   end
 end
 
