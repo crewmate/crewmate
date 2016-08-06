@@ -77,9 +77,9 @@ Then /"([^\"]*)" should not belong to the organization "([^\"]*)"$/ do |login, o
 end
 
 Then /^I fill in the organization description with "([^"]*)"$/ do |text|
-  Then %(I fill in "organization_description" with "#{text}")
+  step %(I fill in "organization_description" with "#{text}")
 end
 
 Then /I should see "([^"]*)" within custom html/ do |text|
-  Then %(I should see "#{text}" within ".custom_html")
+  step %(I should see "#{text}" within ".custom_html")
 end

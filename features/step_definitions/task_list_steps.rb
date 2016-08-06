@@ -17,8 +17,8 @@ Given /^the following task lists? with associations exists?:?$/ do |table|
 end
 
 Given /^the task list called "([^\"]*)" belongs to the project called "([^\"]*)"$/ do |task_list_name, project_name|
-  Given %(there is a task list called "#{task_list_name}")
-  Given %(there is a project called "#{project_name}")
+  step %(there is a task list called "#{task_list_name}")
+  step %(there is a project called "#{project_name}")
   project = Project.find_by_name(project_name)
   TaskList.find_by_name(task_list_name).update_attribute(:project, project)
 end
@@ -26,7 +26,7 @@ end
 When /^I follow "([^\"]*)" in the "([^\"]*)" task list$/ do |link_text, task_list_name|
   task_list = TaskList.find_by_name(task_list_name)
   project = task_list.project
-  When %(I follow "#{link_text}" within "#project_#{project.id}_task_list_#{task_list.id}_with_main_tasks")
+  step %(I follow "#{link_text}" within "#project_#{project.id}_task_list_#{task_list.id}_with_main_tasks")
 end
 
 Then /^I should not see a "([^\"]*)" link in the "([^\"]*)" task list$/ do |link_text, task_list_name|
@@ -43,11 +43,11 @@ When /^I fill in "([^\"]*)" with "([^\"]*)" in the new task form of the "([^\"]*
 end
 
 Then /^(?:|I )should see "([^\"]*)" as a task in the task list$/ do |text|
-  Then %(I should see '#{text}' within '.tasks')
+  step %(I should see '#{text}' within '.tasks')
 end
 
 Then /^(?:|I )should see "([^\"]*)" as a task name$/ do |text|
-  Then %(I should see '#{text}' within '.tasks a.name')
+  step %(I should see '#{text}' within '.tasks a.name')
 end
 
 Then /^I should see the task list "([^\"]*)" before "([^\"]*)"$/ do |task_list1, task_list2|

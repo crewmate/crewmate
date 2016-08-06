@@ -1,6 +1,6 @@
 Feature: Update Project
 
-  Background: 
+  Background:
     Given @mislav exists and is logged in
     And I am currently in the project ruby_rockstars
     And I go to project settings page

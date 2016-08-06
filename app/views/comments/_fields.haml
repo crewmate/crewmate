@@ -20,7 +20,7 @@
       = fields.file_field :asset, :id => 'upload_file'
 
   .add_watchers_box{ :style => 'display: none' }
-    %p= t('comments.watchers.explain') 
+    %p= t('comments.watchers.explain')
 
   .actions
     .attach
@@ -40,10 +40,9 @@
         = task_form.label :due_on
         = date_picker(task_form, :due_on)
 
-    - if !local_assigns[:project]
-      %span.new{ :style => 'display: none' }
-        &larr; &nbsp;&nbsp;
-        = t('comments.watchers.popup_note_html')
+    %span.new{ :style => 'display: none' }
+      &larr; &nbsp;&nbsp;
+      = t('comments.watchers.popup_note_html')
 
     - if local_assigns[:conversation_form] && local_assigns[:project]
       - if f.object.target && can?(:update, f.object.target) && can?(:make_tasks, local_assigns[:project])

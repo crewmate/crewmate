@@ -16,17 +16,17 @@ Given /^(@\w+) exists?$/ do |username|
 end
 
 Given /^@(\w+) exists and is logged in$/ do |username|
-  Given %(@#{username} exists)
-    And %(I'm logged in as @#{username})
+  step %(@#{username} exists)
+    step %(I'm logged in as @#{username})
 end
 
 Given /^I am logged in as ([^@][^\"]*)$/ do |login|
-  Given %(I am currently "#{login}")
-    And %(I have confirmed my email)
-    And "I go to the login page"
-    And "I fill in \"Email or Username\" with \"#{login}\""
-    And "I fill in \"Password\" with \"dragons\""
-    And "I press \"Login\""
+  step %(I am currently "#{login}")
+    step %(I have confirmed my email)
+    step "I go to the login page"
+    step "I fill in \"Email or Username\" with \"#{login}\""
+    step "I fill in \"Password\" with \"dragons\""
+    step "I press \"Login\""
 end
 
 Given /^I log out$/ do
@@ -55,13 +55,13 @@ Given /^the user called "([^\"]*)" is confirmed$/ do |login|
 end
 
 Then /^the user called "([^\"]*)" should administrate the project called "([^\"]*)"/ do |login,name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   project.admin?(User.find_by_login(login))
 end
 
 Then /^the user called "([^\"]*)" should not administrate the project called "([^\"]*)"/ do |login,name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   !project.admin?(User.find_by_login(login))
 end

@@ -2,7 +2,7 @@
 Watchers = {
   toggleBox: function(form, project_id) {
     this.redrawBox(form, project_id);
-    form.down(".add_watchers_box").toggle(); 
+    form.down(".add_watchers_box").toggle();
   },
   redrawBox: function(form, project_id) {
     form.select(".watcher").invoke("remove");

@@ -76,7 +76,7 @@ Feature: When I use Crewmate community version, there is only one organization
     When I fill in "login" with "mislav"
     And I fill in "password" with "dragons"
     And I press "Login"
-    Then I should see "All Projects"
+    Then I should see "Projects"
     And I should see "Organization"
 
   Scenario: I can't create a second organization

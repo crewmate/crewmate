@@ -57,58 +57,44 @@ Given /I have recently managed the project "([^\"]*)"$/ do |name|
 end
 
 Given /I am in the project called "([^\"]*)"$/ do |name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   project.add_user(@current_user)
 end
 
 Given /I am a commenter in the project called "([^\"]*)"$/ do |name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   project.remove_user(@current_user)
   project.add_user(@current_user, :role => Person::ROLES[:commenter])
 end
 
 Given /^"([^\"]*)" is in the project called "([^\"]*)"$/ do |username,name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   project.add_user User.find_by_login(username)
 end
 
 Given /^"([^\"]*)" is not in the project called "([^\"]*)"$/ do |username,name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   project.remove_user User.find_by_login(username)
 end
 
 Given /^all the users are in the project with name: "([^\"]*)"$/ do |name|
-  Given %(there is a project called "#{name}")
+  step %(there is a project called "#{name}")
   project = Project.find_by_name(name)
   User.all.each { |user| project.add_user(user) }
 end
 
 Then /^(?:|I )should see the unconfirmed email message$/ do
   text = "An email was sent to this user, but they still haven't confirmed"
-
-  if Capybara.current_driver == Capybara.javascript_driver
-    assert page.has_xpath?(XPath::HTML.content(text), :visible => true)
-  elsif page.respond_to? :should
-    page.should have_content(text)
-  else
-    assert page.has_content?(text)
-  end
+  page.should have_content(text)
 end
 
 Then /^(?:|I )should see the unauthorized private project message/ do
   text = "This is a private project and you're not authorized to access it."
-
-  if Capybara.current_driver == Capybara.javascript_driver
-    assert page.has_xpath?(XPath::HTML.content(text), :visible => true)
-  elsif page.respond_to? :should
-    page.should have_content(text)
-  else
-    assert page.has_content?(text)
-  end
+  page.should have_content(text)
 end
 
 Given /^there is a project with a conversation$/ do

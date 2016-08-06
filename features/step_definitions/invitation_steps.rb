@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 When /^"([^\"]*)" accepts the invitation from "([^\"]*)"$/ do |username,email|
-  Then %(I log out)
-  Then %(I am logged in as #{username})
+  step %(I log out)
+  step %(I am logged in as #{username})
   open_email(email)
-  Then %(I follow "Accept the invitation to start collaborating" in the email)
-  Then %(I press "Accept")
+  step %(I follow "Accept the invitation to start collaborating" in the email)
+  step %(I press "Accept")
 end

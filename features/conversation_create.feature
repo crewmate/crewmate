@@ -1,7 +1,7 @@
 @javascript
 Feature: Creating a conversation
 
-  Background: 
+  Background:
     Given a project with user @mislav
     And I am logged in as @mislav
 
@@ -19,7 +19,7 @@ Feature: Creating a conversation
     Then I should see "The Internet is a series of tubes" in the title
     And I should see "I just found about this yesterday."
     And I should see "Mislav Marohnić" in the watchers list
-    And I should see "Unwatch" in the watchers list
+    And I should see "UNWATCH" in the watchers list
     When I fill in the comment box with "Really!"
     And I press "Save"
     Then I should see "I just found about this yesterday."
@@ -32,4 +32,3 @@ Feature: Creating a conversation
     And I fill in the comment box with ""
     And I press "Create"
     Then I should see "The conversation cannot start with an empty comment."
-

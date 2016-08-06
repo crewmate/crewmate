@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 Given /^I am in the project called "([^"]*)" the following comments:$/ do |project, table|
-  Given %(I am in the project called "#{project}")
+  step %(I am in the project called "#{project}")
 
   @project = Project.find_by_name(project)
 

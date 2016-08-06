@@ -91,4 +91,3 @@ Feature: Invite a user to a project
     And I follow "Discard invitation"
     And I wait for 1 second
     Then I should not see "charles@crewmate.org"
-

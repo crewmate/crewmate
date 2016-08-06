@@ -4,7 +4,7 @@ Feature: Resetting passwords
   Users should be able to
   enter their email and receive a reset password link
 
-  Background: 
+  Background:
     Given the following confirmed users exist
       | login | email             | first_name | last_name |
       | pablo | pablo@crewmate.org | Pablo      | Villalba  |
@@ -34,7 +34,7 @@ Feature: Resetting passwords
     And I fill in "Password confirmation" with "thirstycups"
     And I press "Reset my password"
     Then I should see "Password was successfully updated."
-    Then I should see "All Projects"
+    Then I should see "Projects"
 
   # test what happens if a user already logged in uses a code
   # test for invalid or expired things
@@ -60,7 +60,7 @@ Feature: Resetting passwords
     And I fill in "Password confirmation" with "thirstycups"
     And I press "Reset my password"
     Then I should see "Password was successfully updated."
-    And I should see "All Projects"
+    And I should see "Projects"
 
   Scenario: Deleted user tries to reset password
     Given the user with login: "pablo" is deleted
@@ -75,4 +75,3 @@ Feature: Resetting passwords
     And the user with login: "pablo" is deleted
     When I follow the reset password link
     Then I should see "The change password URL you visited is either invalid or expired"
-

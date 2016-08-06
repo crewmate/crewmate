@@ -17,7 +17,7 @@ _translations = <%=raw Hash[
   %w[OK Now Today Clear].map { |w| [w, t("calendar.#{w.downcase}")] }
 ].to_json %>;
 
-<% 
+<%
   less_than_one = I18n.t('datetime.distance_in_words.less_than_x_minutes.one')
   less_than_one_ago = I18n.t('datetime.time_ago', :time_ago_in_words => less_than_one)
   one_minute = I18n.t('datetime.distance_in_words.x_minutes.one')

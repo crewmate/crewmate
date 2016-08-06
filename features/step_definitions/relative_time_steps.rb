@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 When /I previously posted the following comments?:?$/ do |table|
-  mislav = User.find_by_login('mislav')
+  mislav  = User.find_by_login('mislav')
   project = mislav.projects.first
   conversation = (project.conversations.first || Factory(:conversation, :name => 'Testing date', :project => project, :user => mislav))
   table.hashes.each do |hash|
@@ -13,6 +13,6 @@ end
 
 Then /^I should see the following time representations?:$/ do |table|
   table.hashes.each do |hash|
-    Then %(I should see "#{hash['formatted_relative_time']}")
+    step %(I should see "#{hash['formatted_relative_time']}")
   end
 end

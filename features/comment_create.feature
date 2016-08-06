@@ -1,7 +1,7 @@
 @javascript
 Feature: Posting a comment on a project wall
 
-  Background: 
+  Background:
     Given a project with user @mislav
     And I am logged in as @mislav
     When I go to the project page
@@ -12,7 +12,7 @@ Feature: Posting a comment on a project wall
     And I wait for 1 second
     Then I should see '<formatted_body>'
 
-    Examples: 
+    Examples:
       | body                                | formatted_body                  |
       | She *used* to _mean_ so much to ME! | She used to mean so much to ME! |
       | Hey, @geoffrey!                     | Hey, @geoffrey!                 |

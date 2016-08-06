@@ -55,7 +55,7 @@ end
 
 Then /^(@.+) should receive (an|no|\d+) emails?( with subject .+)?$/ do |users, amount, with_subject|
   each_user(users) do |user|
-    Then %("#{user.email}" should receive #{amount} emails#{with_subject})
+    step %("#{user.email}" should receive #{amount} emails#{with_subject})
   end
 end
 
@@ -96,7 +96,7 @@ end
 
 When /^(@\w+) opens? the email( with subject .+)?$/ do |users, with_subject_or_text|
   each_user(users) do |user|
-    Then %("#{user.email}" opens the email#{with_subject_or_text})
+    step %("#{user.email}" opens the email#{with_subject_or_text})
   end
 end
 

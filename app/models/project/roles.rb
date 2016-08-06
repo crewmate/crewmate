@@ -25,6 +25,6 @@ class Project
 
     def check_role(user, role)
       self.owner?(user) or
-       (p = people.find_by_user_id(user.id) and p.role >= role)
+       (p = self.people.find_by_user_id(user.id) and p.role >= role)
     end
 end

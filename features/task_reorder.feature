@@ -9,7 +9,7 @@ Feature: Reorder task within the task list view
       | This week | Crewmate |
       | Next week | Crewmate |
     And the following tasks with associations exist:
-      | name                    | task_list | project |
+      | name                    | task_list | project  |
       | Write more test         | This week | Crewmate |
       | Fix a drag and drop bug | This week | Crewmate |
       | Write a blog post       | Next week | Crewmate |

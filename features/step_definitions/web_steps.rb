@@ -40,7 +40,7 @@ end
 
 When /^(?:|I )follow "([^\"]*)"(?: within "([^\"]*)")?$/ do |link, selector|
   with_scope(selector) do
-    click_link(link)
+    first(:link, link).click
   end
 end
 
@@ -70,7 +70,7 @@ end
 When /^(?:|I )fill in the following(?: within "([^\"]*)")?:$/ do |selector, fields|
   with_scope(selector) do
     fields.rows_hash.each do |name, value|
-      When %{I fill in "#{name}" with "#{value}"}
+      step %{I fill in "#{name}" with "#{value}"}
     end
   end
 end
@@ -78,7 +78,7 @@ end
 When /^(?:|I )select the following(?: within "([^\"]*)")?:$/ do |selector, fields|
   with_scope(selector) do
     fields.rows_hash.each do |value, name|
-      When %{I select "#{name}" from "#{value}"}
+      step %{I select "#{name}" from "#{value}"}
     end
   end
 end
@@ -127,34 +127,14 @@ Then /^(?:|I )should see JSON:$/ do |expected_json|
 end
 
 Then /^(?:|I )should see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selector|
-  if Capybara.current_driver == Capybara.javascript_driver
-    with_css_scope(selector) do |scope|
-      assert scope.has_xpath?("//*[contains(text(), '#{text}')]", :visible => true)
-    end
-  elsif page.respond_to? :should
-    with_scope(selector) do
-      page.should have_content(text)
-    end
-  else
-    with_scope(selector) do
-      assert page.has_content?(text)
-    end
+  with_scope(selector) do
+    page.should have_content(text)
   end
 end
 
 Then /^(?:|I )should see '([^\']*)'(?: within '([^\']*)')?$/ do |text, selector|
-  if Capybara.current_driver == Capybara.javascript_driver
-    with_scope(selector) do
-      assert page.has_xpath?(XPath::HTML.content(text), :visible => true)
-    end
-  elsif page.respond_to? :should
-    with_scope(selector) do
-      page.should have_content(text)
-    end
-  else
-    with_scope(selector) do
-      assert page.has_content?(text)
-    end
+  with_scope(selector) do
+    page.should have_content(text)
   end
 end
 
@@ -177,41 +157,21 @@ Then /^I should see "([^\"]*)" only once$/ do |text|
 end
 
 Then /^(?:|I )should not see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selector|
-  if Capybara.current_driver == Capybara.javascript_driver
-    with_css_scope(selector) do |scope|
-      assert scope.has_no_xpath?("//*[contains(text(), '#{text}')]", :visible => true)
-    end
-  elsif page.respond_to? :should
-    with_scope(selector) do
-      page.should have_no_content(text)
-    end
-  else
-    with_scope(selector) do
-      assert page.has_no_content?(text)
-    end
+  with_scope(selector) do
+    page.should have_no_content(text)
   end
 end
 
 Then /^(?:|I )should not see '([^\']*)'(?: within '([^\']*)')?$/ do |text, selector|
-  if Capybara.current_driver == Capybara.javascript_driver
-    with_css_scope(selector) do |scope|
-      assert scope.has_xpath?(XPath::HTML.content(text), :visible => true)
-    end
-  elsif page.respond_to? :should
-    with_scope(selector) do
-      page.should have_no_content(text)
-    end
-  else
-    with_scope(selector) do
-      assert page.has_no_content?(text)
-    end
+  with_scope(selector) do
+    page.should have_no_content(text)
   end
 end
 
 Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^\"]*)")?$/ do |regexp, selector|
   with_scope(selector) do
     args = ['//*', {
-      :text => Regexp.new(regexp),
+      :text    => Regexp.new(regexp),
       :visible => Capybara.current_driver == Capybara.javascript_driver
     }]
     if page.respond_to? :should
@@ -221,9 +181,6 @@ Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^\"]*)")?$/ do |regexp, s
     end
   end
 end
-
-
-
 
 Then /^the "([^\"]*)" field(?: within "([^\"]*)")? should contain "([^\"]*)"$/ do |field, selector, value|
   with_scope(selector) do
@@ -329,7 +286,7 @@ When /^(.*) confirming with OK$/ do |main_task|
     page.evaluate_script("window.confirm = function(msg) { return true; }")
   end
 
-  When main_task
+  step main_task
 
   if Capybara.current_driver == Capybara.javascript_driver
     page.evaluate_script("window.alert = window.old_alert")

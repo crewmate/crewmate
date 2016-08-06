@@ -80,8 +80,8 @@ class PeopleController < ApplicationController
 
   protected
 
-  def load_person
-    @person = @current_project.people.find params[:id]
-    @user = @person.user
-  end
+    def load_person
+      @person = @current_project.people.find params[:id]
+      @user = @person.user
+    end
 end

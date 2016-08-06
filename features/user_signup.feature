@@ -32,7 +32,7 @@ Feature: Signing up
     Then I should see "is reserved"
     And "al.lane@example.com" should receive no emails
 
-    Examples: 
+    Examples:
       | username |
       | all      |
       | ALL      |

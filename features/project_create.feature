@@ -12,7 +12,7 @@ Feature: Creating a project
     Then I should see "<response>"
     And I should see "<flash>"
 
-    Examples: 
+    Examples:
       | name                  | response          | flash           |
       | Title with ()_+&-     | Title with ()_+&- | Invite people   |
       | Ruby Rockstars        | Ruby Rockstars    | Invite people   |
@@ -30,7 +30,6 @@ Feature: Creating a project
     And I select "ACME" from "Organization"
     And I press "Create project"
     Then I should see "Invite people"
-
 
   Scenario: I ought to have already joined the project I created, not another random project
     Given I am an administrator in the organization called "ACME"
