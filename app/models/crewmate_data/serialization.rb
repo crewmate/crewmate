@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class TeamboxData
+class CrewmateData
   attr_writer :data
 
   def serialize(organizations, projects, users)
@@ -26,7 +26,7 @@ class TeamboxData
     if service == 'basecamp'
       unserialize_basecamp(object_maps, opts)
     else
-      unserialize_teambox({'users' => data['account']['users'],
+      unserialize_crewmate({'users' => data['account']['users'],
                            'projects' => data['account']['projects'],
                            'organizations' => data['account']['organizations']},
                            object_maps, opts)
@@ -101,11 +101,11 @@ class TeamboxData
     data = File.open(name, 'r') do |file|
       opts[:format] == 'basecamp' ? Hash.from_xml(file.read) : ActiveSupport::JSON.decode(file.read)
     end
-    TeamboxData.new.tap{|d| d.service = opts[:format]||'teambox'; d.data = data}.unserialize(user_map, opts)
+    CrewmateData.new.tap{|d| d.service = opts[:format]||'crewmate'; d.data = data}.unserialize(user_map, opts)
   end
 
   def self.export_to_file(projects, users, organizations, name)
-    data = TeamboxData.new.serialize(organizations, projects, users)
+    data = CrewmateData.new.serialize(organizations, projects, users)
     File.open(name, 'w') { |file| file.write data.to_json }
   end
 end

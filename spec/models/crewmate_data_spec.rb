@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
-describe TeamboxData do
+describe CrewmateData do
   before do
     Teambox.config.delay_data_processing = false
     FileUtils.mkdir_p(%w( tmp ))
@@ -8,7 +8,7 @@ describe TeamboxData do
 
   describe "unserialize" do
     it "should unserialize data" do
-      make_the_teambox_dump
+      make_the_crewmate_dump
       data = dump_test_data
       old_user_count = User.count
 
@@ -18,14 +18,14 @@ describe TeamboxData do
       Project.count.should == 0
       Organization.count.should == 0
 
-      TeamboxData.new.tap{|d| d.data = data }.unserialize({}, {:create_organizations => true})
+      CrewmateData.new.tap{|d| d.data = data }.unserialize({}, {:create_organizations => true})
 
       Organization.count.should == 1
       Project.count.should == 1
     end
 
     it "should map existing data where specified" do
-      make_the_teambox_dump
+      make_the_crewmate_dump
       data = dump_test_data
 
       user_list = User.all.map(&:login)
@@ -43,7 +43,7 @@ describe TeamboxData do
       user_map = user_list.inject({}){|a,key| a[key] = user.login; a}
       org_map = org_list.inject({}){|a,key| a[key] = organization.permalink; a}
 
-      TeamboxData.new.tap{|d| d.data = data; d.user = user }.unserialize(
+      CrewmateData.new.tap{|d| d.data = data; d.user = user }.unserialize(
         {'User' => user_map, 'Organization' => org_map}, {})
 
       Organization.count.should == 1
@@ -56,7 +56,7 @@ describe TeamboxData do
     end
 
     it "should create users when specified" do
-      make_the_teambox_dump
+      make_the_crewmate_dump
       data = dump_test_data
       old_user_count = User.count
       old_project_count = Project.count
@@ -69,14 +69,14 @@ describe TeamboxData do
       Project.count.should == 0
       Organization.count.should == 0
 
-      TeamboxData.new.tap{|d| d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
+      CrewmateData.new.tap{|d| d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
 
       User.count.should == old_user_count
       Project.count.should == old_project_count
     end
 
     it "should rollback changes if an error occurs" do
-      data = File.open("#{Rails.root}/spec/fixtures/teamboxdump_invalid.json", 'r') do |file|
+      data = File.open("#{Rails.root}/spec/fixtures/crewmatedump_invalid.json", 'r') do |file|
         ActiveSupport::JSON.decode(file.read)
       end
 
@@ -89,7 +89,7 @@ describe TeamboxData do
       Organization.count.should == 0
 
       begin
-        TeamboxData.new.tap{|d| d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
+        CrewmateData.new.tap{|d| d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
       rescue => e
         e.to_s.match(/Validation failed:/).should_not == nil
       end
@@ -101,7 +101,7 @@ describe TeamboxData do
     end
 
     it "should preserve created_at dates" do
-      data = File.open("#{Rails.root}/spec/fixtures/teamboxdump.json", 'r') do |file|
+      data = File.open("#{Rails.root}/spec/fixtures/crewmatedump.json", 'r') do |file|
         ActiveSupport::JSON.decode(file.read)
       end
 
@@ -113,7 +113,7 @@ describe TeamboxData do
       Project.count.should == 0
       Organization.count.should == 0
 
-      TeamboxData.new.tap{|d| d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
+      CrewmateData.new.tap{|d| d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
 
       Comment.all.each {|o| o.created_at.year.should == 2009}
       Project.all.each {|o| o.created_at.year.should == 2009}
@@ -133,7 +133,7 @@ describe TeamboxData do
       Activity.count.should == 0
 
       data = File.open("#{Rails.root}/spec/fixtures/campdump.xml") { |f| Hash.from_xml f.read }
-      TeamboxData.new.tap{|d| d.service = 'basecamp'; d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
+      CrewmateData.new.tap{|d| d.service = 'basecamp'; d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
 
       User.count.should == 1
       Project.count.should == 1
@@ -153,7 +153,7 @@ describe TeamboxData do
 
     it "should preserve created_at dates when loading a basecamp dump" do
       data = File.open("#{Rails.root}/spec/fixtures/campdump.xml") { |f| Hash.from_xml f.read }
-      TeamboxData.new.tap{|d| d.service = 'basecamp'; d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
+      CrewmateData.new.tap{|d| d.service = 'basecamp'; d.data = data }.unserialize({}, {:create_users => true, :create_organizations => true})
 
       Comment.all.each {|o| o.created_at.year.should == 2009}
       Project.all.each {|o| o.created_at.year.should == 2009}
@@ -165,8 +165,8 @@ describe TeamboxData do
 
   describe "serialize" do
     it "should serialize data" do
-      make_the_teambox_dump
-      encoded_data = ActiveSupport::JSON.encode TeamboxData.new.serialize(Organization.all, Project.all, User.all)
+      make_the_crewmate_dump
+      encoded_data = ActiveSupport::JSON.encode CrewmateData.new.serialize(Organization.all, Project.all, User.all)
       account_dump = ActiveSupport::JSON.decode(encoded_data)['account']
       account_dump['projects'].length.should == 1
       project_dump = account_dump['projects'][0]
@@ -184,10 +184,10 @@ describe TeamboxData do
 
   describe "do_export" do
     it "should only serialize projects from organizations the user is an admin of" do
-      make_the_teambox_dump
+      make_the_crewmate_dump
 
       user = Factory(:user)
-      dump = TeamboxData.new.tap{|d|d.type_name='export';d.user=user}
+      dump = CrewmateData.new.tap{|d|d.type_name='export';d.user=user}
       dump.project_ids = Project.all.map(&:id)
       dump.save
 
@@ -199,15 +199,15 @@ describe TeamboxData do
 
   describe "do_import" do
     it "should import projects into the target organization" do
-      make_and_dump_the_teambox_dump
+      make_and_dump_the_crewmate_dump
 
       organization = Factory(:organization)
       user = Factory(:user)
       user_map = @user_list.inject({}){|a,key| a[key] = user.login; a}
 
       organization.add_member(user, Membership::ROLES[:admin])
-      dump = TeamboxData.new.tap{|d|d.type_name='import';d.service='teambox';d.user=user; d.save}
-      dump.data = @teambox_dump
+      dump = CrewmateData.new.tap{|d|d.type_name='import';d.service='crewmate';d.user=user; d.save}
+      dump.data = @crewmate_dump
       dump.target_organization = organization.permalink
       dump.user_map = user_map
       dump.status_name = :mapping
@@ -220,22 +220,22 @@ describe TeamboxData do
     end
 
     it "should still import projects into the target organization after a DJ save" do
-      make_and_dump_the_teambox_dump
+      make_and_dump_the_crewmate_dump
 
       organization = Factory(:organization)
       user = Factory(:user)
       user_map = @user_list.inject({}){|a,key| a[key] = user.login; a}
 
       organization.add_member(user, Membership::ROLES[:admin])
-      dump = TeamboxData.new.tap{|d|d.type_name='import';d.service='teambox';d.user=user; d.save}
-      dump.import_data = mock_uploader('dump.js', 'text/json', ActiveSupport::JSON.encode(@teambox_dump))
+      dump = CrewmateData.new.tap{|d|d.type_name='import';d.service='crewmate';d.user=user; d.save}
+      dump.import_data = mock_uploader('dump.js', 'text/json', ActiveSupport::JSON.encode(@crewmate_dump))
       dump.save
       dump.target_organization = organization.permalink
       dump.user_map = user_map
       dump.status_name = :pre_processing
 
       dump.save.should == true
-      dump = TeamboxData.find_by_id(dump.id)
+      dump = CrewmateData.find_by_id(dump.id)
 
       dump.map_data.should_not == nil
       dump.error?.should_not == true
@@ -248,7 +248,7 @@ describe TeamboxData do
     end
 
     it "should not allow unknown users to be mapped" do
-      make_and_dump_the_teambox_dump
+      make_and_dump_the_crewmate_dump
 
       organization = Factory(:organization)
       user = Factory(:user)
@@ -256,8 +256,8 @@ describe TeamboxData do
       user_map = @user_list.inject({}){|a,key| a[key] = unknown_user.login; a}
 
       organization.add_member(user, Membership::ROLES[:admin])
-      dump = TeamboxData.new.tap{|d|d.type_name='import';d.service='teambox';d.user=user;d.save}
-      dump.data = @teambox_dump
+      dump = CrewmateData.new.tap{|d|d.type_name='import';d.service='crewmate';d.user=user;d.save}
+      dump.data = @crewmate_dump
       dump.target_organization = organization.permalink
       dump.user_map = user_map
       dump.status_name = :mapping
@@ -270,20 +270,20 @@ describe TeamboxData do
     end
 
     it "should not alter existing memberships in the target organization" do
-      make_and_dump_the_teambox_dump
+      make_and_dump_the_crewmate_dump
 
       organization = Factory(:organization)
       user = Factory(:user)
       user_map = @user_list.inject({}){|a,key| a[key] = user.login; a}
 
       organization.add_member(user, Membership::ROLES[:admin])
-      dump = TeamboxData.new.tap{|d|d.type_name='import';d.service='teambox';d.user=user; d.save}
-      dump.data = @teambox_dump
+      dump = CrewmateData.new.tap{|d|d.type_name='import';d.service='crewmate';d.user=user; d.save}
+      dump.data = @crewmate_dump
       dump.target_organization = organization.permalink
       dump.user_map = user_map
       dump.status_name = :mapping
 
-      @teambox_dump['account']['organizations'].each do |org|
+      @crewmate_dump['account']['organizations'].each do |org|
         org['members'].each { |member| member['role'] = 20 }
       end
 
@@ -299,7 +299,7 @@ describe TeamboxData do
     end
 
     it "should not import projects into an organization the user is not an admin of" do
-      make_and_dump_the_teambox_dump
+      make_and_dump_the_crewmate_dump
 
       Organization.destroy_all
       User.destroy_all
@@ -309,8 +309,8 @@ describe TeamboxData do
       user = Factory(:user)
       user_map = @user_list.inject({}){|a,key| a[key] = user.login; a}
 
-      dump = TeamboxData.new.tap{|d|d.type_name='import';d.service='teambox';d.user=user}
-      dump.data = @teambox_dump
+      dump = CrewmateData.new.tap{|d|d.type_name='import';d.service='crewmate';d.user=user}
+      dump.data = @crewmate_dump
       dump.target_organization = organization.permalink
       dump.user_map = user_map
       dump.status_name = :mapping
@@ -325,7 +325,7 @@ describe TeamboxData do
 
   describe "import_from_file" do
     it "should import data from a file" do
-      TeamboxData.import_from_file("#{Rails.root}/spec/fixtures/teamboxdump.json", {}, {:create_users => true, :create_organizations => true})
+      CrewmateData.import_from_file("#{Rails.root}/spec/fixtures/crewmatedump.json", {}, {:create_users => true, :create_organizations => true})
 
       Organization.count.should == 1
       Project.count.should == 1
@@ -335,17 +335,17 @@ describe TeamboxData do
 
   describe "export_to_file" do
     it "should export data to a file" do
-      make_the_teambox_dump
-      TeamboxData.export_to_file(Project.all, User.all, Organization.all, "#{Rails.root}/tmp/test-export.json")
+      make_the_crewmate_dump
+      CrewmateData.export_to_file(Project.all, User.all, Organization.all, "#{Rails.root}/tmp/test-export.json")
     end
   end
 
   describe "to_api_hash" do
     it "should generate an api representation of this object" do
-      make_the_teambox_dump
+      make_the_crewmate_dump
 
       user = Factory(:user)
-      dump = TeamboxData.new.tap{|d|d.type_name='export';d.user=user}
+      dump = CrewmateData.new.tap{|d|d.type_name='export';d.user=user}
       dump.project_ids = Project.all.map(&:id)
       dump.save
 

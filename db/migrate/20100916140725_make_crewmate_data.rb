@@ -1,6 +1,6 @@
-class MakeTeamboxData < ActiveRecord::Migration
+class MakeCrewmateData < ActiveRecord::Migration
   def self.up
-    create_table :teambox_datas do |t|
+    create_table :crewmate_datas do |t|
       t.integer :user_id
       t.integer :type_id
 
@@ -19,6 +19,6 @@ class MakeTeamboxData < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :teambox_datas
+    drop_table :crewmate_datas
   end
 end

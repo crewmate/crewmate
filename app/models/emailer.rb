@@ -113,22 +113,22 @@ class Emailer < ActionMailer::Base
   end
 
   def notify_export(data_id)
-    @data  = TeamboxData.find(data_id)
+    @data  = CrewmateData.find(data_id)
     @user  = @data.user
     @error = !@data.exported?
     mail(
       :to         => @data.user.email,
-      :subject    => @error ? I18n.t('emailer.teamboxdata.export_failed') : I18n.t('emailer.teamboxdata.exported')
+      :subject    => @error ? I18n.t('emailer.crewmatedata.export_failed') : I18n.t('emailer.crewmatedata.exported')
     )
   end
 
   def notify_import(data_id)
-    @data  = TeamboxData.find(data_id)
+    @data  = CrewmateData.find(data_id)
     @user  = @data.user
     @error = !@data.imported?
     mail(
       :to         => @data.user.email,
-      :subject    => @error ? I18n.t('emailer.teamboxdata.import_failed') : I18n.t('emailer.teamboxdata.imported')
+      :subject    => @error ? I18n.t('emailer.crewmatedata.import_failed') : I18n.t('emailer.crewmatedata.imported')
     )
   end
 

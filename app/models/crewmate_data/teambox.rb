@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-class TeamboxData
-  def unserialize_teambox(dump, object_maps, opts={})
+class CrewmateData
+  def unserialize_crewmate(dump, object_maps, opts={})
     ActiveRecord::Base.transaction do
       @object_map = {
         'User' => {},

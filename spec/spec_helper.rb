@@ -141,16 +141,16 @@ def make_a_typical_project
     @project
 end
 
-def make_the_teambox_dump
+def make_the_crewmate_dump
   @project = Factory(:project)
   @task_list = Factory(:task_list, :project => @project)
   @conversation = Factory(:conversation, :project => @project)
   @task = Factory(:task, :task_list_id => @task_list.id, :project => @project)
 end
 
-def make_and_dump_the_teambox_dump
-  make_the_teambox_dump
-  @teambox_dump = dump_test_data
+def make_and_dump_the_crewmate_dump
+  make_the_crewmate_dump
+  @crewmate_dump = dump_test_data
 
   @user_list = User.all.map(&:login)
 
@@ -164,7 +164,7 @@ def decode_test_csv(body)
 end
 
 def dump_test_data
-  ActiveSupport::JSON.decode(ActiveSupport::JSON.encode(TeamboxData.new.serialize(Organization.all, Project.all, User.all)))
+  ActiveSupport::JSON.decode(ActiveSupport::JSON.encode(CrewmateData.new.serialize(Organization.all, Project.all, User.all)))
 end
 
 # Backwards compatibility fix: this way we can use it in subject blocks

@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class TeamboxDatasController < ApplicationController
+class CrewmateDatasController < ApplicationController
   skip_before_filter :load_project
   before_filter :find_data, :except => [:index, :new, :create]
 
@@ -102,7 +102,7 @@ class TeamboxDatasController < ApplicationController
 private
 
   def find_data
-    unless @data = TeamboxData.find_by_id(params[:id])
+    unless @data = CrewmateData.find_by_id(params[:id])
       flash[:error] = t('not_found.data')
       redirect_to teambox_datas_path
     end

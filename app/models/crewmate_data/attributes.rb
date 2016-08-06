@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class TeamboxData
+class CrewmateData
   attr_accessor :data
   attr_accessor :import_data
   attr_writer :map_data

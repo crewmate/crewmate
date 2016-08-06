@@ -17,7 +17,7 @@ Scenario: Mislav imports an historic project
     | gandalf| gandalf@middleearth.com  | Gandalf    | Grey      |
   And I follow "Import"
   And I choose "Crewmate"
-  And I attach the file "spec/fixtures/teamboxdump.json" to "teambox_data_import_data"
+  And I attach the file "spec/fixtures/crewmatedump.json" to "teambox_data_import_data"
   And I press "Import data"
   Then I should see "Andrew Wiggin (@gandhi_1)"
   And I should see "Andrew Wiggin (@gandhi_2)"
@@ -50,7 +50,7 @@ Scenario: Mislav imports another historic project
   And "frodo" is an administrator in the organization of the project called "Ruby Rockstars"
   And I follow "Import"
   And I choose "Crewmate"
-  And I attach the file "spec/fixtures/teamboxdump_problem.json" to "teambox_data_import_data"
+  And I attach the file "spec/fixtures/crewmatedump_problem.json" to "teambox_data_import_data"
   And I press "Import data"
   When I select the following:
     | Stevie Hobs (@steve_test2)            |  Mislav Marohnić (@mislav) |
@@ -95,7 +95,7 @@ Scenario: Mislav forgets to map the data
   When I go to the your data page
   And I follow "Import"
   And I choose "Crewmate"
-  And I attach the file "spec/fixtures/teamboxdump.json" to "teambox_data_import_data"
+  And I attach the file "spec/fixtures/crewmatedump.json" to "teambox_data_import_data"
   And I press "Import data"
   Then I should see "Andrew Wiggin (@gandhi_1)"
   And I should see "Andrew Wiggin (@gandhi_2)"
@@ -109,7 +109,7 @@ Scenario: Mislav imports data with invalid records
   When I go to the your data page
   And I follow "Import"
   And I choose "Crewmate"
-  And I attach the file "spec/fixtures/teamboxdump_invalid.json" to "teambox_data_import_data"
+  And I attach the file "spec/fixtures/crewmatedump_invalid.json" to "teambox_data_import_data"
   And I press "Import data"
   Then I should see "Andrew Wiggin (@gandhi_1)"
   And I should see "Andrew Wiggin (@gandhi_2)"
