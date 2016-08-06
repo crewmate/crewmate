@@ -44,7 +44,7 @@ class Emailer < ActionMailer::Base
       from_address(reply_identifier, user.try(:name))
     end
 
-    def from_address(recipient = "no-reply", name = "Crewmate")
+    def from_address(recipient = "no-reply", name = Teambox.config.application_name)
       domain = Teambox.config.smtp_settings[:domain]
       address = "#{recipient}@#{domain}"
 
