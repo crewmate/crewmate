@@ -420,7 +420,7 @@ ActiveRecord::Schema.define(:version => 20140209164838) do
     t.string   "login",                     :limit => 40
     t.string   "first_name",                :limit => 20,  :default => ""
     t.string   "last_name",                 :limit => 20,  :default => ""
-    t.text     "biography",                                :default => ""
+    t.text     "biography"
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
